@@ -95,6 +95,7 @@
     async function startGame(opts) {
         wordLength = opts.wordLength;
         gameScreen.style.setProperty('--letter-count', wordLength);
+        gameScreen.dataset.mode = wordLength === 5 ? 'wordle' : 'jeff';
         rowCount = opts.rows;
         columns = opts.columns;
         fullWordList = opts.wordList;
