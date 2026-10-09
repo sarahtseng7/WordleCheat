@@ -261,6 +261,15 @@ body {
 
 /* ---- Small screens ---- */
 @media (max-width: 800px) {
+  .menu-buttons, .rows-container {
+    flex-direction: column;
+  }
+  .action-row {
+    flex-wrap: wrap;
+  }
+  .mode-btn.has-image img, .action-btn.has-image img {
+    max-width: min(260px, 100%);
+  }
   .game-body {
     flex-direction: column;
   }

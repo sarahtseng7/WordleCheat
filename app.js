@@ -22,6 +22,7 @@
         if (dataUrl) {
             const img = document.createElement('img');
             img.src = dataUrl;
+            img.alt = fallbackEl.textContent;
             container.appendChild(img);
         } else {
             container.appendChild(fallbackEl);
@@ -154,6 +155,7 @@
         input.className = 'guess-input';
         input.maxLength = wordLength;
         input.autocomplete = 'off';
+        input.setAttribute('aria-label', `Guess ${rowIndex + 1}`);
         input.spellcheck = false;
         rowInputs[rowIndex] = input;
 
@@ -175,7 +177,9 @@
             input.value = text;
             for (let c = 0; c < wordLength; c++) {
                 const ch = c < text.length ? text[c] : '';
-                boxesState[rowIndex][c] = { letter: ch, state: EMPTY };
+                if (boxesState[rowIndex][c].letter !== ch) {
+                    boxesState[rowIndex][c] = { letter: ch, state: EMPTY };
+                }
                 renderBox(rowIndex, c);
             }
         });

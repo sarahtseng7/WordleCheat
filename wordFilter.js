@@ -27,9 +27,10 @@ function matchesGuess(word, guess) {
         }
     }
 
-    // Yellow letters must NOT be at that position.
+    // Yellow and gray letters cannot occupy their marked position,
+    // including gray duplicates of a letter marked green/yellow elsewhere.
     for (let i = 0; i < len; i++) {
-        if (guess.states[i] === YELLOW && word[i] === (guess.letters[i] || '').toLowerCase()) {
+        if ((guess.states[i] === YELLOW || guess.states[i] === GRAY) && word[i] === (guess.letters[i] || '').toLowerCase()) {
             return false;
         }
     }

@@ -11,29 +11,29 @@ not production-appropriate) before it's just files a static host can
 serve. Since the whole point here is "easily publishable," plain HTML/
 CSS/JS gets you there with zero tooling — drag the folder onto a host
 and it works. If you later want to bring this into a React app (e.g.
-to combine it with other pages), the logic in `js/wordFilter.js` and
-`js/imageCrop.js` has no DOM/React dependencies and can be dropped
-into React components largely as-is; only `js/app.js` (the direct DOM
+to combine it with other pages), the logic in `wordFilter.js` and
+`imageCrop.js` has no DOM/React dependencies and can be dropped
+into React components largely as-is; only `app.js` (the direct DOM
 manipulation) would need rewriting as JSX.
 
 ## File structure
 
 ```
 index.html              - page shell
-css/styles.css           - all styling (pale blue background, pale
+styles.css           - all styling (pale blue background, pale
                             green rounded panel, Wordle-style box colors)
-js/wordFilter.js         - word-filtering algorithm (port of
+wordFilter.js         - word-filtering algorithm (port of
                             WordFilterEngine.java)
-js/imageCrop.js          - crops an image to a centered slice via
+imageCrop.js          - crops an image to a centered slice via
                             <canvas>, with graceful fallback if the
                             image is missing (port of the Java
                             loadMiddleSlice()/getSubimage() logic)
-js/app.js                - builds the menu/game screens, wires up
+app.js                - builds the menu/game screens, wires up
                             clicks, re-filters on demand
-data/wordle-words.js     - the 5-letter word list (from wordle.csv),
+wordle-words.js     - the 5-letter word list (from wordle.csv),
                             embedded as a JS array so the page works
                             even opened directly as a local file
-data/jeff-words.js       - the 12-letter word list (from jeff.csv),
+jeff-words.js       - the 12-letter word list (from jeff.csv),
                             same treatment
 images/                  - OPTIONAL. See below.
 ```
@@ -59,7 +59,7 @@ images/reset.png          - Reset All Boxes button (same crop)
 
 The crop fractions match whatever was last set in the Java version.
 If you change them there, update the matching fraction arguments in
-`js/app.js` (look for `cropImage(...)` / `wFrac`, `hFrac` values).
+`app.js` (look for `cropImage(...)` / `wFrac`, `hFrac` values).
 
 ## Running locally
 
@@ -83,9 +83,13 @@ Any static host works, since there's no backend and no build step:
 
 - **GitHub Pages**: push this folder to a repo, enable Pages on the
   `main` branch (or a `gh-pages` branch), done.
-- **Netlify / Vercel**: drag-and-drop the folder in their dashboard,
-  or connect the repo — no build command needed (leave the build
-  command blank, publish directory = this folder).
+- **Vercel**: import the repository or deploy this folder with the Vercel CLI.
+  Select the **Other** framework preset, leave the build command blank,
+  and set the output directory to `.`. The root directory must be the
+  folder containing `index.html`. Commit and push the fixes to trigger
+  a new deployment when using a connected repository.
+- **Netlify**: upload the folder or connect the repository; no build
+  command is needed, and the publish directory is this folder.
 - **Any other static host** (S3 + CloudFront, Cloudflare Pages,
   Surge, etc.): upload these files as-is.
 
