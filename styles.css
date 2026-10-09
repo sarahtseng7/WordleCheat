@@ -359,17 +359,17 @@ body {
   .boxes-row {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(var(--letter-count, 5), minmax(0, 58px));
+    grid-template-columns: repeat(var(--letter-count, 5), minmax(0, 65px));
     justify-content: start;
     align-self: stretch;
     min-height: 0;
-    gap: 4px;
+    gap: 8px;
   }
 
   .letter-box {
     width: 100%;
     height: auto;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 4 / 5;
     max-height: 100%;
     justify-self: center;
     align-self: center;
