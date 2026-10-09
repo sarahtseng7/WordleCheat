@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Word Guess Helper</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app">
+
+    <section id="menu-screen" class="screen">
+      <div id="menu-title" class="title-slot"></div>
+      <div class="menu-buttons">
+        <button id="wordle-btn" class="mode-btn">Wordle (5 letters, 6 tries)</button>
+        <button id="jeff-btn" class="mode-btn">Jeff Goldblum (12 letters, 3 tries)</button>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen hidden">
+      <div id="game-title" class="title-slot"></div>
+      <p id="instructions">
+        Type a guess in each row, then click a box to cycle its color.<br>
+        white &rarr; gray (incorrect letter) &rarr; yellow (correct letter, incorrect position)
+        &rarr; green (correct letter &amp; position).
+      </p>
+
+      <div class="game-body">
+        <div id="green-panel" class="green-panel">
+          <div id="rows-container" class="rows-container"></div>
+          <div class="action-row"></div>
+        </div>
+
+        <div id="results-panel" class="results-panel">
+          <div id="result-count" class="result-count">Possible words: --</div>
+          <div id="result-list" class="result-list"></div>
+        </div>
+      </div>
+
+      <div class="back-row"></div>
+    </section>
+
+  </div>
+
+  <script src="data/wordle-words.js"></script>
+  <script src="data/jeff-words.js"></script>
+  <script src="js/wordFilter.js"></script>
+  <script src="js/imageCrop.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

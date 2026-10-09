@@ -1,0 +1,271 @@
+:root {
+  --background: #d2e8fa;   /* pale blue, same RGB as BACKGROUND in Java */
+  --green-panel: #c2dab8;  /* pale green, same RGB as GREEN_PANEL in Java */
+  --box-white: #ffffff;
+  --box-gray: #787c7e;
+  --box-yellow: #c9b458;
+  --box-green: #6aaa64;
+  --box-border: #787c7e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: #222;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.screen {
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.fallback-title {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.title-slot {
+  text-align: center;
+}
+
+.title-slot img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* ---- Menu screen ---- */
+
+#menu-screen {
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+}
+
+#menu-screen .fallback-title {
+  font-size: 48px;
+}
+
+.menu-buttons {
+  display: flex;
+  gap: 24px;
+}
+
+.mode-btn {
+  font-size: 18px;
+  padding: 12px 28px;
+  border-radius: 10px;
+  border: 1px solid #8ba3b8;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.mode-btn:hover {
+  background: #f0f7ff;
+}
+
+.mode-btn.has-image {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.mode-btn.has-image img {
+  display: block;
+  max-width: 260px;
+  height: auto;
+}
+
+/* ---- Game screen ---- */
+
+#game-screen .fallback-title {
+  font-size: 32px;
+}
+
+#instructions {
+  text-align: center;
+  font-size: 15px;
+  margin: 8px 0 16px;
+  line-height: 1.4;
+}
+
+.game-body {
+  flex: 1;
+  display: flex;
+  gap: 15px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.green-panel {
+  flex: 1;
+  background: var(--green-panel);
+  border-radius: 40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.rows-container {
+  flex: 1;
+  display: flex;
+  gap: 30px;
+}
+
+.rows-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.guess-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--background);
+  padding: 6px;
+  border-radius: 6px;
+  flex-wrap: wrap;
+}
+
+.guess-label {
+  width: 68px;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.guess-input {
+  width: 90px;
+  font-size: 14px;
+  padding: 3px 6px;
+  text-transform: uppercase;
+  border: 1px solid #8ba3b8;
+  border-radius: 4px;
+}
+
+.boxes-row {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.letter-box {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--box-border);
+  background: var(--box-white);
+  color: #111;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 4px;
+}
+
+.letter-box.state-1 { background: var(--box-gray); color: #fff; }
+.letter-box.state-2 { background: var(--box-yellow); color: #fff; }
+.letter-box.state-3 { background: var(--box-green); color: #fff; }
+
+.action-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.action-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: 1px solid #8ba3b8;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  background: #f0f7ff;
+}
+
+.action-btn.has-image {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.action-btn.has-image img {
+  display: block;
+  max-width: 260px;
+  height: auto;
+}
+
+.results-panel {
+  width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.result-count {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.result-list {
+  flex: 1;
+  overflow-y: scroll;
+  background: #ffffff;
+  border: 1px solid #8ba3b8;
+  border-radius: 6px;
+  font-family: "Courier New", Consolas, monospace;
+  font-size: 13px;
+  padding: 6px 10px;
+}
+
+.result-list div {
+  padding: 1px 0;
+}
+
+.back-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+/* ---- Small screens ---- */
+@media (max-width: 800px) {
+  .game-body {
+    flex-direction: column;
+  }
+  .results-panel {
+    width: auto;
+    height: 260px;
+  }
+}
