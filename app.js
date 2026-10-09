@@ -94,6 +94,7 @@
 
     async function startGame(opts) {
         wordLength = opts.wordLength;
+        gameScreen.style.setProperty('--letter-count', wordLength);
         rowCount = opts.rows;
         columns = opts.columns;
         fullWordList = opts.wordList;
